@@ -1,0 +1,45 @@
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.cache
+*.log
+
+# Build output
+bin/
+obj/
+
+# Temporary files
+*.tmp
+*.temp
+
+# IIS Express
+.vsconfig/
+applicationhost.config
+
+# Rider / JetBrains
+.idea/
+
+# VS Code
+.vscode/
+
+# .NET
+*.dll
+*.exe
+*.pdb
+*.mdb
+*.cache
+*.db
+
+# Copilot / tooling indexes
+**/CopilotIndices/
+
+# NuGet
+*.nupkg
+project.lock.json
+project.fragment.lock.json
+
+# Publish outputs
+*.publishsettings
+*.pubxml
+*.pubxml.user
