@@ -36,7 +36,22 @@ namespace ProductsManagement.Controllers
             return Ok(product); // Returns the product with HTTP 200 status
         }
 
-        
+        // PUT: api/products/{id}
+        [HttpPut]
+        [Route("{id}")]
+        public IActionResult UpdateProduct(int id, Product product)
+        {
+            var existingProduct = Products.FirstOrDefault(p => p.Id == id);
+            if (existingProduct == null) // if product with given id does not exist, return 404
+            {
+                return NotFound(); // Returns HTTP 404 if product not found
+            }
+            // otherwise, update the product details
+            existingProduct.Name = product.Name;
+            existingProduct.Price = product.Price;
+            existingProduct.Description = product.Description;
+            return NoContent(); // Returns HTTP 204 status
+        }
 
     }
 }
