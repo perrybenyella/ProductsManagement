@@ -8,16 +8,18 @@ namespace ProductsManagement.Controllers
     [ApiController]
     public class ProductsController : ControllerBase
     {
-        [HttpGet]
-        public IActionResult GetProducts() // Get method that gets the list of products
+        private static List<Product> Products = new()
         {
-            var products = new List<Product>
-            {
                 new() { Id = 1, Name = "Laptop", Price = 1199.99m, Description = "High-performance laptop" },
                 new() { Id = 2, Name = "Smartphone", Price = 799.99m, Description = "Latest model smartphone" },
                 new() { Id = 3, Name = "Tablet", Price = 299.99m, Description = "Latest model tablet" }
             };
-            return Ok(products); // Returns a list of products with HTTP 200 status
+
+        // GET: api/products
+        [HttpGet]
+        public IActionResult GetProducts() // Get method that gets the list of products
+        {
+            return Ok(Products); // Returns a list of products with HTTP 200 status
         }
     }
 }
