@@ -21,5 +21,22 @@ namespace ProductsManagement.Controllers
         {
             return Ok(Products); // Returns a list of products with HTTP 200 status
         }
+
+        // GET: api/products/{id}
+        [HttpGet]
+        [Route("{id}")]
+        public IActionResult GetProductById(int id)
+        {
+
+            var product = Products.FirstOrDefault(p => p.Id == id);
+            if (product == null)
+            {
+                return NotFound(); // Returns HTTP 404 if product not found
+            }
+            return Ok(product); // Returns the product with HTTP 200 status
+        }
+
+        
+
     }
 }
