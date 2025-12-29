@@ -1,6 +1,8 @@
-﻿namespace ProductsManagement.Data
+﻿using Microsoft.EntityFrameworkCore;
+
+namespace ProductsManagement.Data
 {
-    public class AppDbContext
+    public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(options)
     {
     }
 }
