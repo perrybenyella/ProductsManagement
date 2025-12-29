@@ -1,3 +1,5 @@
+using Microsoft.EntityFrameworkCore;
+using ProductsManagement.Data;
 using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,6 +10,11 @@ builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 builder.Services.AddSwaggerGen(); //Registers Swagger/OpenAPI generation services with DI.
+
+// configure the connection string for the database
+builder.Services.AddDbContext<AppDbContext>(options => // Getting the cnnection string from the config file (appsettings.json), and providing the connection string name
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
 
 var app = builder.Build();
 
