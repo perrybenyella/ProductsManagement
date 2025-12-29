@@ -53,5 +53,20 @@ namespace ProductsManagement.Controllers
             return NoContent(); // Returns HTTP 204 status
         }
 
+        // DELETE: api/products/{id}
+        [HttpDelete]
+        [Route("{id}")]
+        public IActionResult DeleteProduct(int id)
+        {
+            var product = Products.FirstOrDefault(p => p.Id == id);
+            if (product == null) // if product with given id does not exist, return 404
+            {
+                return NotFound(); // Returns HTTP 404 if product not found
+            }
+            // ohterwise, delete the product
+            Products.Remove(product); // Remove the product from the list
+            return NoContent(); // Returns HTTP 204 status
+        }
+
     }
 }
