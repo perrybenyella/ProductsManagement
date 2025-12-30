@@ -38,7 +38,9 @@ POST {{ProductsManagement_HostAddress}}/api/products
 Content-Type: application/json
 
 {
-  //Product
+   "name": "Tablet 2026",
+   "price": 299.99,
+   "description": "Latest model tablet"
 }
 
 ###
