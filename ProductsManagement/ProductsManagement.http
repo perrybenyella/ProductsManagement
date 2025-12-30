@@ -33,3 +33,12 @@ DELETE {{ProductsManagement_HostAddress}}/api/products/{{id}}
 Accept: application/json
 
 ###
+
+POST {{ProductsManagement_HostAddress}}/api/products
+Content-Type: application/json
+
+{
+  //Product
+}
+
+###
