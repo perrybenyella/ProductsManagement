@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using ProductsManagement.DTOs;
 using ProductsManagement.Models;
 using ProductsManagement.Services;
 
@@ -38,9 +39,9 @@ namespace ProductsManagement.Controllers
 
         // POST: api/products
         [HttpPost]
-        public IActionResult CreateProduct(Product product)
+        public IActionResult CreateProduct(ProductRequest productRequest)
         {
-            var createdProduct = service.AddProduct(product); // Add the new product
+            var createdProduct = service.AddProduct(productRequest); // Add the new product
             return CreatedAtAction(nameof(GetProductById), new { id = createdProduct.Id }, createdProduct); // Returns HTTP 201 status with location header
         }
 
