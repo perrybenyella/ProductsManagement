@@ -13,7 +13,7 @@ namespace ProductsManagement.Controllers
                 new() { Id = 1, Name = "Laptop", Price = 1199.99m, Description = "High-performance laptop" },
                 new() { Id = 2, Name = "Smartphone", Price = 799.99m, Description = "Latest model smartphone" },
                 new() { Id = 3, Name = "Tablet", Price = 299.99m, Description = "Latest model tablet" }
-            };
+        };
 
         // GET: api/products
         [HttpGet]
