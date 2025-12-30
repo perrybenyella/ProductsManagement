@@ -28,7 +28,7 @@ Accept: application/json
 }
 
 ### Delete a product
-@id=2
+@id=3
 DELETE {{ProductsManagement_HostAddress}}/api/products/{{id}}
 Accept: application/json
 
