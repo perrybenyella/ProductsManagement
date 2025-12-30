@@ -12,10 +12,11 @@ namespace ProductsManagement.Services
             context = appDbContext; // inject the appDbContext dependency
         }
 
-        public void AddedProduct(Product product)
+        public Product AddedProduct(Product product)
         {
-            context.Products.Add(product); // add the new product to the database
+            var newProduct = context.Products.Add(product); // add the new product to the database
             context.SaveChanges(); // save changes to the database
+            return newProduct.Entity; // return the added product entity
         }
 
         public void DeletableProduct(int id)
