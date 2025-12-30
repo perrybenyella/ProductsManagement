@@ -45,16 +45,33 @@ namespace ProductsManagement.Services
             }
         }
 
-        public IEnumerable<Product> GetAllProducts()
+        public IEnumerable<ProductResponse> GetAllProducts()
         {
             var products = context.Products.ToList(); // retrieve all products from the database
-            return products;
+            var response = products.Select(p => new ProductResponse
+            {
+                Id = p.Id,
+                Name = p.Name,
+                Price = p.Price,
+                Description = p.Description
+            });
+            return response;
         }
 
-        public Product? GetProductById(int id)
+        public ProductResponse? GetProductById(int id)
         {
             var product = context.Products.Find(id); // find the product by id
-            return product;
+            if (product == null)
+            {
+                return null;
+            }
+            return new ProductResponse
+            {
+                Id = product.Id,
+                Name = product.Name,
+                Price = product.Price,
+                Description = product.Description
+            };
         }
 
         public void UpdateProduct(int id, Product product)

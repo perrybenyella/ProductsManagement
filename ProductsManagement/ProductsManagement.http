@@ -32,7 +32,7 @@ Accept: application/json
 DELETE {{ProductsManagement_HostAddress}}/api/products/{{id}}
 Accept: application/json
 
-###
+### Add a product
 
 POST {{ProductsManagement_HostAddress}}/api/products
 Content-Type: application/json
@@ -40,6 +40,17 @@ Content-Type: application/json
 {
    "name": "Tablet 2026",
    "price": 299.99,
+   "description": "Latest model tablet"
+}
+
+###
+
+POST {{ProductsManagement_HostAddress}}/api/products
+Content-Type: application/json
+
+{
+   "name": "HP Laptop 2026",
+   "price": 1299.99,
    "description": "Latest model tablet"
 }
 
