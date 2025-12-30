@@ -1,6 +1,57 @@
-@ProductsManagement_HostAddress = http://localhost:5114
+@ProductsManagement_HostAddress = https://localhost:7162
 
 GET {{ProductsManagement_HostAddress}}/weatherforecast/
 Accept: application/json
+
+### Get all products
+
+GET {{ProductsManagement_HostAddress}}/api/products
+Accept: application/json
+
+### Get product by id
+
+@id=2
+GET {{ProductsManagement_HostAddress}}/api/products/{{id}}
+Accept: application/json
+
+### Update a product
+@id=2
+PUT {{ProductsManagement_HostAddress}}/api/products/{{id}}
+Content-Type: application/json
+Accept: application/json
+
+{
+  "id": 2,
+  "name": "Smartphone 2026",
+  "price": 199.99,
+  "description": "Latest model smartphone"
+}
+
+### Delete a product
+@id=3
+DELETE {{ProductsManagement_HostAddress}}/api/products/{{id}}
+Accept: application/json
+
+### Add a product
+
+POST {{ProductsManagement_HostAddress}}/api/products
+Content-Type: application/json
+
+{
+   "name": "Tablet 2026",
+   "price": 299.99,
+   "description": "Latest model tablet"
+}
+
+###
+
+POST {{ProductsManagement_HostAddress}}/api/products
+Content-Type: application/json
+
+{
+   "name": "HP Laptop 2026",
+   "price": 1299.99,
+   "description": "Latest model tablet"
+}
 
 ###
