@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ProductsManagement.Models;
+using ProductsManagement.Services;
 
 namespace ProductsManagement.Controllers
 {
@@ -14,6 +15,13 @@ namespace ProductsManagement.Controllers
                 new() { Id = 2, Name = "Smartphone", Price = 799.99m, Description = "Latest model smartphone" },
                 new() { Id = 3, Name = "Tablet", Price = 299.99m, Description = "Latest model tablet" }
         };
+
+        private readonly IProductService service;
+
+        public ProductsController(IProductService service)
+        {
+            this.service = service; // now, inject the productService dependency into the controller
+        }
 
         // GET: api/products
         [HttpGet]
