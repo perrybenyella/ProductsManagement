@@ -36,6 +36,14 @@ namespace ProductsManagement.Controllers
             return Ok(product); // Returns the product with HTTP 200 status
         }
 
+        // POST: api/products
+        [HttpPost]
+        public IActionResult CreateProduct(Product product)
+        {
+            var createdProduct = service.AddProduct(product); // Add the new product
+            return CreatedAtAction(nameof(GetProductById), new { id = createdProduct.Id }, createdProduct); // Returns HTTP 201 status with location header
+        }
+
         // PUT: api/products/{id}
         [HttpPut]
         [Route("{id}")]
@@ -59,7 +67,7 @@ namespace ProductsManagement.Controllers
         {
             try 
             {
-                service.DeletableProduct(id); // Delete the product
+                service.DeleteProduct(id); // Delete the product
                 return NoContent(); // Returns HTTP 204 status
             }
             catch (Exception) // if product with given id does not exist
