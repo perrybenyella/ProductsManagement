@@ -8,6 +8,6 @@ namespace ProductsManagement.Services
         Product? GetProductById(int id);
         void AddedProduct(Product product);
         void UpdateProduct(int id, Product product);
-        void DeletableProduct(Product product);
+        void DeletableProduct(int id);
     }
 }

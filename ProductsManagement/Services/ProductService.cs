@@ -17,7 +17,7 @@ namespace ProductsManagement.Services
             throw new NotImplementedException();
         }
 
-        public void DeletableProduct(Product product)
+        public void DeletableProduct(int id)
         {
             throw new NotImplementedException();
         }
