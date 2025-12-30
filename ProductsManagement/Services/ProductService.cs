@@ -24,7 +24,8 @@ namespace ProductsManagement.Services
 
         public IEnumerable<Product> GetAllProducts()
         {
-            throw new NotImplementedException();
+            var products = context.Products.ToList(); // retrieve all products from the database
+            return products;
         }
 
         public Product? GetProductById(int id)
