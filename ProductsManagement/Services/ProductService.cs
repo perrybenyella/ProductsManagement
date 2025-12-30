@@ -14,12 +14,18 @@ namespace ProductsManagement.Services
 
         public void AddedProduct(Product product)
         {
-            throw new NotImplementedException();
+            context.Products.Add(product); // add the new product to the database
+            context.SaveChanges(); // save changes to the database
         }
 
         public void DeletableProduct(int id)
         {
-            throw new NotImplementedException();
+            var product = context.Products.Find(id);
+            if (product != null)
+            {
+                context.Products.Remove(product);
+                context.SaveChanges();
+            }
         }
 
         public IEnumerable<Product> GetAllProducts()
@@ -30,12 +36,20 @@ namespace ProductsManagement.Services
 
         public Product? GetProductById(int id)
         {
-            throw new NotImplementedException();
+            var product = context.Products.Find(id); // find the product by id
+            return product;
         }
 
         public void UpdateProduct(int id, Product product)
         {
-            throw new NotImplementedException();
+            var existingProduct = context.Products.Find(id);
+            if (existingProduct != null)
+            {
+                existingProduct.Name = product.Name;
+                existingProduct.Price = product.Price;
+                existingProduct.Description = product.Description;
+                context.SaveChanges();
+            }
         }
     }
 }
