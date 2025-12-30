@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using ProductsManagement.Data;
+using ProductsManagement.Services;
 using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,10 +12,12 @@ builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 builder.Services.AddSwaggerGen(); //Registers Swagger/OpenAPI generation services with DI.
 
-// configure the connection string for the database
+// configure AppDbContext and the connection string for the database
 builder.Services.AddDbContext<AppDbContext>(options => // Getting the cnnection string from the config file (appsettings.json), and providing the connection string name
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+// configure IProductService; framework will inject ProductService whenever IProductService is required; instantiates it for each HTTP request
+builder.Services.AddScoped<IProductService, ProductService>();
 
 var app = builder.Build();
 
